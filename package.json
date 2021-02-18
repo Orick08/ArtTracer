@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Orick08/ArtTracer/issues"
   },
-  "homepage": "https://github.com/Orick08/ArtTracer#readme"
+  "homepage": "https://github.com/Orick08/ArtTracer#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }

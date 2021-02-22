@@ -5,8 +5,8 @@ Router.get('/', (req,res)=>{
   res.render("index");
 })
 
-Router.post('/register', (req, res)=>{
-  res.send("Exception not implemented yet");
+Router.get('/register', (req, res)=>{
+  res.render("register");
 })
 
 module.exports = Router;

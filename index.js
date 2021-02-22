@@ -10,6 +10,8 @@ const port = 3000;
 
 const publicDirectory = path.join(__dirname, './public');
 app.use(express.static(publicDirectory));
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json())
 app.set('view engine', 'ejs');
 
 const db = mysql.createConnection({
@@ -30,6 +32,8 @@ db.connect((error)=>{
 
 //Routes
 const indexRouter = require('./routes/index');
+const indexAuth = require('./routes/auth');
 app.use('/', indexRouter);
+app.use('/auth', indexAuth);
 
 app.listen(port);

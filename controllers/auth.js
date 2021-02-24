@@ -1,4 +1,6 @@
 const mysql = require('mysql');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
 
 const db = mysql.createConnection({
   host: process.env.HOST,
@@ -12,7 +14,7 @@ exports.register = (req, res) => {
 
   const { user, email, password} = req.body;
 
-  db.query('SELECT email FROM users WHERE email = ?', [email], (error, result)=>{
+  db.query('SELECT email FROM users WHERE email = ?', [email], async (error, result)=>{
     if(error){
       console.log(error);
       //TODO: Mostrar el error en el front-end
@@ -24,7 +26,9 @@ exports.register = (req, res) => {
       return;
     }
 
-    
+    let hashedPass = await bcrypt.hash(password, 10);
+    console.log(hashedPass);
+
   })
 
   res.send("Form submited");

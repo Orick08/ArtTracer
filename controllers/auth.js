@@ -27,9 +27,16 @@ exports.register = (req, res) => {
     }
 
     let hashedPass = await bcrypt.hash(password, 10);
-    console.log(hashedPass);
 
-    db.query('INSERT INTO usuarios VALUES ?')
+    db.query('INSERT INTO usuarios SET ?', {nick: user, email: email, pass: hashedPass}, (error, results) =>{
+      if(error){
+        console.log(error);
+        //TODO: no se pudo registrar el usuario en la base de datos
+        return;
+      }
+
+      //TODO: Exito, el usuario se registro exitosamente
+    });
   })
 
   res.send("Form submited");

@@ -2,10 +2,10 @@
   "name": "arttracer",
   "version": "0.0.1",
   "description": "A simple front base for personal database of books, games and music to take a look in the future.",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",

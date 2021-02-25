@@ -1,11 +1,106 @@
 <html lang="es-mx">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Art Tracer</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <link rel="stylesheet" href="/styles/style.css">
+  <title>Art Tracer</title>
 </head>
+
 <body>
-    This is HTML!
+  <!-- Image and text -->
+  <nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="/images/icon.png" alt="" width="32" height="32"
+          class="d-inline-block align-top">
+        Art Tracer
+      </a>
+    </div>
+  </nav>
+
+  <div class="content">
+    <div class="container pt-5">
+      <div class="call2action">
+        <h2 class="text-center">Forget what to read, watch or play? No more</h2>
+        <h4 class="text-center">With Art Tracer</h4>
+
+        <div class="row">
+
+          <div class="col-md-4">
+            <h3 class="text-center">Log-in</h3>
+            <p class="text-center">If you already have an account</p>
+
+            <form action="/auth/login" method="POST" autocomplete="on" class="text-center">
+              <div class="mb-3">
+                <label for="user" class="bold pb-1">Username:</label>
+                <input type="text" class="form-control" id="user" name="user">
+              </div>
+              <div class="mb-3">
+                <label for="password" class="bold pb-1">Password:</label>
+                <input type="password" class="form-control" name="password" id="password">
+              </div>
+
+              <button type="submit" class="btn btn-success">Login</button>
+            </form>
+
+          </div>
+
+          <div class="col-md-8">
+            <h3 class="text-center">Register</h3>
+            <p class="text-center">And start organizing your time</p>
+
+            <form action="/auth/register" method="POST" autocomplete="off">
+              <div class="row mb-3">
+                <label for="user" class="col-sm-3 col-form-label bold">Username:</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="user" name="user">
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label for="email" class="col-sm-3 col-form-label bold">Email:</label>
+                <div class="col-sm-9">
+                  <input type="email" class="form-control" name="email" id="email">
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label for="password" class="col-sm-3 col-form-label bold">Password:</label>
+                <div class="col-sm-9">
+                  <input type="password" class="form-control" name="password" id="password">
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label for="con-password" class="col-sm-3 col-form-label bold">Confirm password:</label>
+                <div class="col-sm-9">
+                  <input type="password" class="form-control" id="con-password">
+                </div>
+              </div>
+              <div class="row float-end">
+                <div class="form-check col-12">
+                  <input class="form-check-input" type="checkbox" id="gridCheck" required>
+                  <label class="form-check-label" for="gridCheck">
+                    I accept the <a href="#">terms and conditions</a>.
+                  </label>
+                  <br><br>
+                  <button type="submit" class="btn btn-dark float-end">Register</button>
+                </div>
+              </div>
+              
+            </form>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+    crossorigin="anonymous"></script>
 </body>
+
 </html>

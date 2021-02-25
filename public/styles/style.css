@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Amethysta&display=swap');
+
+.navbar-brand{
+  font-family: 'Amethysta', serif;
+}
+
+a:link{
+  color: darkblue;
+}
+
+a:link:hover{
+  color: blue;
+}
+
+.content{
+  background-image: url(/images/pexels-steve-johnson.jpg);
+  background-size: cover;
+  min-height: 94%;
+}
+
+.call2action{
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 2rem;
+  border-radius: 10px;
+  color: #444;
+}
+
+.bold{
+  font-weight: bold;
+}

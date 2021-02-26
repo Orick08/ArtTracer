@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const dotenv = require('dotenv');
 const mysql = require('mysql');
+const cookieParser = require('cookie-parser');
 
 dotenv.config({ path: './.env' });
 
@@ -12,6 +13,7 @@ const publicDirectory = path.join(__dirname, './public');
 app.use(express.static(publicDirectory));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json())
+app.use(cookieParser())
 app.set('view engine', 'ejs');
 
 const db = mysql.createConnection({

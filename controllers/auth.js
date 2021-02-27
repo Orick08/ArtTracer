@@ -47,18 +47,20 @@ exports.login = async (req, res) => {
     const { user, password } = req.body;
 
     if(!user || !password){
-      //TODO: Mensaje de error si no se subio bien el formulario
-      return res.status(400);
+      return res.status(400).render('index', {message: "Please indicate your user and password."});
     }
 
     db.query('SELECT * FROM usuarios WHERE nick = ?', [user], async (error, results)=>{
       if(error){
-        //TODO: Error de base de datos
+        console.log("Database conection error in login");
         console.log(error);
+        res.render('index', {message: "Unexpected error if this persist please contact the admin."});
+        return;
       }
 
       if(!results || !(await bcrypt.compare(password, results[0].pass))){
-        //TODO: Error email or password is incorrect
+        res.render('index', {message: "Your password or email is incorrect"});
+        return;
       }
       else{
         const id = results[0].id;
@@ -77,6 +79,7 @@ exports.login = async (req, res) => {
         res.cookie('artToken', token, cookieOptions);
         res.status(200);
         //TODO: Redirect, successful login
+        res.render('index', {message: "Successful login"});
       }
     });
 

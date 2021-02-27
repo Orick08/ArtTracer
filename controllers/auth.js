@@ -16,13 +16,14 @@ exports.register = (req, res) => {
 
   db.query('SELECT email FROM usuarios WHERE email = ?', [email], async (error, result)=>{
     if(error){
+      console.log("Error with the database conection on register controller!!!");
       console.log(error);
-      //TODO: Mostrar el error en el front-end
+      res.render('index', {message: "Unexpected error if this persist please contact the admin."});
       return;
     }
 
     if(result.length > 0){
-      //TODO: Mostrar mensaje de error en el front-end usuario ya registrado
+      res.render('index', {message: "The email is already on use, if you have an account please login."});
       return;
     }
 
@@ -30,16 +31,15 @@ exports.register = (req, res) => {
 
     db.query('INSERT INTO usuarios SET ?', {nick: user, email: email, pass: hashedPass}, (error, results) =>{
       if(error){
+        console.log("Error on the database inserting a new user!!!");
         console.log(error);
-        //TODO: no se pudo registrar el usuario en la base de datos
+        res.render('index', {message: "Unexpected error if this persist please contact the admin."});
         return;
       }
 
       //TODO: Exito, el usuario se registro exitosamente
     });
-  })
-
-  res.send("Form submited");
+  });
 }
 
 exports.login = async (req, res) => {

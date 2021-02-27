@@ -58,7 +58,7 @@ exports.login = async (req, res) => {
         return;
       }
 
-      if(!results || !(await bcrypt.compare(password, results[0].pass))){
+      if(results.length == 0 || !(await bcrypt.compare(password, results[0].pass))){
         res.render('index', {message: "Your password or email is incorrect"});
         return;
       }

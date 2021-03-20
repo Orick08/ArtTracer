@@ -9,6 +9,18 @@ const db = mysql.createConnection({
   database: process.env.DATABASE
 });
 
+exports.redirectWithCookie = (req, res, next) =>{
+  console.log("Middleware loaded");
+  if(req.cookies.artToken){
+    const DECODED_COOKIE = jwt.verify(req.cookies.artToken, process.env.JWT_SECRET, 'HS512');
+    if(DECODED_COOKIE.id){
+      res.redirect('/dashboard')
+    }
+  }
+
+  next();
+};
+
 exports.register = (req, res) => {
   console.log(req.body);
 
@@ -63,7 +75,7 @@ exports.login = async (req, res) => {
         return;
       }
       else{
-        const id = results[0].id;
+        const id = results[0].id_usuario;
 
         const token = jwt.sign({ id: id }, process.env.JWT_SECRET, {
           expiresIn: process.env.JWT_EXPIRES_IN
@@ -79,7 +91,7 @@ exports.login = async (req, res) => {
         res.cookie('artToken', token, cookieOptions);
         res.status(200);
         //TODO: Redirect, successful login
-        res.render('index', {message: "Successful login"});
+        res.redirect('/dashboard/')
       }
     });
 

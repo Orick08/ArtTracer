@@ -1,7 +1,6 @@
 const express = require('express');
 const path = require('path');
 const dotenv = require('dotenv');
-const mysql = require('mysql');
 const cookieParser = require('cookie-parser');
 
 dotenv.config({ path: './.env' });

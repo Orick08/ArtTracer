@@ -1,9 +1,9 @@
 const express = require('express');
-const auth = require('../controllers/auth');
+const middleCookie = require('../controllers/middleCookie');
 const Router = express.Router();
 
 //Instance in localhost:3000/dashboard/...
-Router.get('/', auth.needsCookie,(req, res) =>{
+Router.get('/', middleCookie.needsCookie,(req, res) =>{
   res.render('dashboard');
 });
 

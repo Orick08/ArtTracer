@@ -1,8 +1,8 @@
 const express = require('express');
-const auth = require('../controllers/auth');
+const middleCookie = require('../controllers/middleCookie');
 const Router = express.Router();
 
-Router.get('/', auth.redirectWithCookie,(req,res)=>{
+Router.get('/', middleCookie.redirectWithCookie,(req,res)=>{
   res.render("index");
 });
 

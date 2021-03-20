@@ -15,9 +15,9 @@ exports.redirectWithCookie = (req, res, next) =>{
     if(DECODED_COOKIE.id){
       res.redirect('/dashboard')
     }
+  }else{
+    next();
   }
-
-  next();
 };
 
 exports.register = (req, res) => {

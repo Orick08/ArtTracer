@@ -89,7 +89,6 @@ exports.login = async (req, res) => {
 
         res.cookie('artToken', token, cookieOptions);
         res.status(200);
-        //TODO: Redirect, successful login
         res.redirect('/dashboard/')
       }
     });
@@ -98,4 +97,9 @@ exports.login = async (req, res) => {
   } catch (error) {
     console.log(error);
   }
+}
+
+exports.logout = (req, res)=>{
+  res.clearCookie('artToken');
+  res.redirect('/');
 }

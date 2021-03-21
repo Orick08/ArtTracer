@@ -21,9 +21,11 @@ app.set('view engine', 'ejs');
 const indexRouter = require('./routes/index');
 const indexAuth = require('./routes/auth');
 const dashboardRouter = require('./routes/dashboard');
+const itemsRouter = require('./routes/items');
 
 app.use('/', indexRouter);
 app.use('/auth', indexAuth);
 app.use('/dashboard', dashboardRouter);
+app.use('/items', itemsRouter);
 
 app.listen(port);

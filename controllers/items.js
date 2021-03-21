@@ -9,6 +9,8 @@ const db = mysql.createConnection({
 });
 
 exports.newItem = (req, res)=>{
-  console.log(req.body);
+  let data = req.body;
+
+  data.categoria = parseInt(data.categoria);
   res.json(req.body);
 }

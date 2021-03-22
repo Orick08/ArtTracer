@@ -28,12 +28,21 @@ exports.newItem = (req, res)=>{
     return;
   }
 
-  data.inicio = new Date(data.inicio).toISOString().slice(0, 10).replace('T', ' ');;
-  data.final = new Date(data.final).toISOString().slice(0, 10).replace('T', ' ');;
+  data.inicio = new Date(data.inicio).toISOString().slice(0, 10).replace('T', ' ');
+  try{
+    data.final = new Date(data.final).toISOString().slice(0, 10).replace('T', ' ');
+  }
+  catch{
+    data.final = null;
+  }
+  
 
   db.query('INSERT INTO items SET ?', data, (error, results) =>{
     if(error){
       console.log(error);
+      //TODO: Proper error message
+      res.redirect('/dashboard');
+      return;
     }
 
     res.redirect('/dashboard');

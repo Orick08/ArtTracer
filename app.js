@@ -28,4 +28,4 @@ app.use('/auth', indexAuth);
 app.use('/dashboard', dashboardRouter);
 app.use('/items', itemsRouter);
 
-app.listen(port);
+app.listen(process.env.PORT || 3000);

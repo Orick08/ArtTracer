@@ -3,10 +3,10 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
 const db = mysql.createConnection({
-  host: process.env.HOST,
-  user: process.env.USER,
-  password: process.env.PASSWORD,
-  database: process.env.DATABASE
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASE
 });
 
 exports.register = (req, res) => {
@@ -37,7 +37,7 @@ exports.register = (req, res) => {
         return;
       }
 
-      //TODO: Exito, el usuario se registro exitosamente
+      res.render('index', {message: "Account successfully created! Welcome to Art Tracer."});
     });
   });
 }

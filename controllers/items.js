@@ -16,7 +16,7 @@ exports.newItem = (req, res)=>{
 
   //Add db user id to the data
   if(req.cookies.artToken){
-    const DECODED_COOKIE = jwt.verify(req.cookies.artToken, process.env.JWT_SECRET, 'HS512');
+    const DECODED_COOKIE = res.locals.DECODED_COOKIE;
     if(DECODED_COOKIE.id){
       data.id_usuario = DECODED_COOKIE.id;
     }else{

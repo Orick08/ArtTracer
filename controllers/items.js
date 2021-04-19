@@ -48,3 +48,24 @@ exports.newItem = (req, res)=>{
     res.redirect('/dashboard');
   });
 }
+
+exports.listItems = (req, res) =>{
+  const DECODED_COOKIE = res.locals.DECODED_COOKIE;
+
+  //Check if user id exists
+  if(DECODED_COOKIE.id == undefined){
+    res.render('index', {message: "You need to login to see this page!"});
+    return;
+  }
+
+  //Read list of items database
+  db.query('SELECT * FROM items WHERE ?', {id_usuario: DECODED_COOKIE.id}, (error, results) =>{
+    if(error){
+      console.log(error);
+      //TODO: Proper error message
+      res.redirect('/dashboard');
+      return;
+    }
+    res.json(results);
+  });
+}
